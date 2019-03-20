@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+		<meta charset="utf-8" />
+		<title>Offline Google Forms</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Offline Google Form</h1>
+		</header>
+		<main>
+			<div class="wrapper">
+				<form action="#" method="POST" class="form">
+					<div class="question">
+						<h3>Full Name</h3>
+						<input type="text" class="form__input" name="name" required />
+					</div>
+					<div class="question">
+						<h3>Gender</h3>
+						<div class="radio_button">
+							<input name="radio" type="radio" checked />
+							<label for="radio" class="radio-label">Male</label>
+						</div>
+						<div class="radio_button">
+							<input name="radio" type="radio" unchecked />
+							<label for="radio" class="radio-label">Female</label>
+						</div>
+					</div>
+					<div class="form__actions">
+						<button type="submit" class="btn btn--primary" id="submit">Submit</button>
+					</div>
+				</form>
+			</div>
+		</main>
+		<script src="js/main.js"></script>
+	</body>
+</html>

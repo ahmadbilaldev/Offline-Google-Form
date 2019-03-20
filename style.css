@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #f0f0f0;
+	font: normal 17px/1.5 Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+	color: #5e5f63;
+}
+header {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+h1 {
+	text-align: center;
+}
+h3 {
+	display: inline-block;
+}
+.wrapper {
+	display: flex;
+	align-content: center;
+	box-sizing: border-box;
+	justify-content: center;
+}
+.radio_button {
+	display: inline-block;
+	margin-left: 1rem;
+}
+#submit {
+	padding: 0.5rem;
+}
