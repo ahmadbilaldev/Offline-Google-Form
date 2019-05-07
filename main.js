@@ -3,8 +3,6 @@ const SELECTORS = {
 	feedbackArea: '.form__feedback'
 };
 
-import axios from 'axios';
-
 class OfflineForm {
 	constructor(element) {
 		this.form = element;
@@ -44,8 +42,10 @@ class OfflineForm {
 
 		if (typeof Storage !== 'undefined') {
 			const entry = {
+				time: new Date().getTime(),
 				data: this.data
 			};
+
 			localStorage.setItem(this.id, JSON.stringify(entry));
 			return true;
 		}
@@ -90,6 +90,14 @@ class OfflineForm {
 			const entry = item && JSON.parse(item);
 
 			if (entry) {
+				// discard submissions older than one day
+				const now = new Date().getTime();
+				const day = 24 * 60 * 60 * 1000;
+				if (now - day > entry.time) {
+					localStorage.removeItem(this.id);
+					return;
+				}
+
 				// we have saved form data, try to submit it
 				this.data = entry.data;
 				this.sendData();
@@ -107,6 +115,8 @@ class OfflineForm {
 		if (typeof this.form === 'object' && this.form.nodeName === 'FORM') {
 			const len = this.form.elements.length;
 			for (i = 0; i < len; i += 1) {
+				if (window.CP.shouldStopExecution(0)) break;
+				if (window.CP.shouldStopExecution(0)) break;
 				field = this.form.elements[i];
 				if (
 					field.name &&
@@ -118,6 +128,8 @@ class OfflineForm {
 					data[field.name] = field.value || '';
 				}
 			}
+			window.CP.exitedLoop(0);
+			window.CP.exitedLoop(0);
 		}
 		this.data = data;
 	}
